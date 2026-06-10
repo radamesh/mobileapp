@@ -2,10 +2,7 @@ package com.sjs.mobileapp.controller.user;
 
 import com.sjs.mobileapp.entity.User;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -24,5 +21,10 @@ public class UserController {
         user.setId(id);
         user.setUsername("radame.silva");
         return ResponseEntity.ok(user);
+    }
+
+    @PostMapping
+    public ResponseEntity<?> createUsers(@PathVariable Long id) {
+        return ResponseEntity.ok(Map.of("message", "Fazendo o Lgin"));
     }
 }
