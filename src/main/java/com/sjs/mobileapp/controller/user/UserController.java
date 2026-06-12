@@ -23,7 +23,7 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public ResponseEntity<?> createUsers(@PathVariable Long id) {
         return ResponseEntity.ok(Map.of("message", "Fazendo o Lgin"));
     }

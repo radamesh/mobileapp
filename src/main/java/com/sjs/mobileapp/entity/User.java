@@ -44,7 +44,7 @@ public class User implements UserDetails {
 
     @Column(nullable = false)
     private boolean ativo = true;
-
+c
     @ElementCollection(fetch = FetchType.EAGER)
     private Set<String> roles = new HashSet<>();
 
