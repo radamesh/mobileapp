@@ -27,7 +27,6 @@ public class AuthController {
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         var authentication = this.authenticationManager.authenticate(usernamePassword);
         return ResponseEntity.ok(authentication);
-
     }
 
     @PostMapping("/logout")

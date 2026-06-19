@@ -9,6 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/user")
@@ -23,16 +24,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getOnlyOneUser(@PathVariable Long id) {
-        User user = new User();
-        user.setId(id);
-        user.setUsername("radame.silva");
+    public ResponseEntity<Optional<User>> getOnlyOneUser(@PathVariable Long id) {
+        Optional<User> user = userService.findById(id);
         return ResponseEntity.ok(user);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<?> createUsers() {
-        return ResponseEntity.ok(Map.of("message", "criando novo usuario"));
     }
 
     @PostMapping("/register")

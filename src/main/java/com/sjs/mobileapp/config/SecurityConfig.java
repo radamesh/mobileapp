@@ -6,6 +6,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,13 +20,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-//            .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-//                .requestMatchers("/").permitAll()
-//                .anyRequest()
-//                .authenticated()
-//            )
+            .csrf(AbstractHttpConfigurer::disable)
+            .sessionManagement(session -> session
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+            .authorizeHttpRequests(authorizeRequests -> authorizeRequests
+                .requestMatchers("/auth/login").permitAll()
+                .requestMatchers("/user/register").permitAll()
+                .requestMatchers("/produtos").hasRole("USER")
+                .anyRequest()
+                .authenticated()
+            );
 //            .formLogin(form -> form
 //                .loginPage("/login")
 //                .permitAll()
