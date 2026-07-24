@@ -1,7 +1,7 @@
 package com.sjs.mobileapp.service.user;
 
 import com.sjs.mobileapp.dto.user.RegisterRequest;
-import com.sjs.mobileapp.entity.User;
+import com.sjs.mobileapp.entity.user.User;
 import com.sjs.mobileapp.exception.ValidationException;
 import com.sjs.mobileapp.repository.UserRepository;
 import lombok.AllArgsConstructor;

@@ -1,7 +1,7 @@
 package com.sjs.mobileapp.controller.user;
 
 import com.sjs.mobileapp.dto.user.RegisterRequest;
-import com.sjs.mobileapp.entity.User;
+import com.sjs.mobileapp.entity.user.User;
 import com.sjs.mobileapp.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
